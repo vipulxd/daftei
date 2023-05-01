@@ -81,3 +81,4 @@ typings/
 .idea
 .gitignore
 .vscode
+package-lock.json
