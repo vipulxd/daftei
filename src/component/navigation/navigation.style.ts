@@ -6,7 +6,8 @@ export const style = {
         justifyContent: 'center',
         width:'100%',
         background :'#09111b',
-        borderBottom:'2px solid #73ac7826'
+        borderBottom:'2px solid #73ac7826',
+        zIndex:2
     },
     blockStart: {},
     blockWrapper: {

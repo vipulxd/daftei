@@ -1,5 +1,5 @@
-export interface InterfaceCollection {
-    user: {
+export interface UserInterface {
+
         user_id?: string,
         username?: string,
         email?: string,
@@ -8,16 +8,14 @@ export interface InterfaceCollection {
         isVerified?: boolean,
         created_at?: string,
         updated_at?: string
-    },
-    story: {
-        story_id ?: string,
-        content ?: string,
-        created_at ?: string,
-        updated_at ?: string,
-        published_at ?: string,
-        user_id ?: string
-    }
-
+}
+export interface NoteInterface {
+    note_id ?: string,
+    content ?: string,
+    created_at ?: string,
+    updated_at ?: string,
+    published_at ?: string,
+    user_id ?: string
 }
 
 

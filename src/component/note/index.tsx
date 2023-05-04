@@ -1,22 +1,20 @@
 import React from 'react';
-import {InterfaceCollection} from "../../utlis/interfaces";
 import parse from 'html-react-parser';
 import {style} from "./note.style";
-import {Fade, Hinge, Slide} from "react-awesome-reveal";
+import {NoteInterface} from "../../utlis/interfaces";
+
 interface Props {
-    notes:InterfaceCollection['story'],
+    note:NoteInterface,
     index:number
 }
 
-export function Note({notes,index}:Props){
-    let {content}   = notes;
+export function Note({note,index}:Props){
+    let {content,note_id,created_at,user_id,updated_at,published_at}   = note;
     return (
-
-        <React.Fragment>
+        <React.Fragment key={index}>
           <div className={'note-container'} style={style.container}>
            <div style={style.content}> {content &&  parse(content)}</div>
           </div>
         </React.Fragment>
-
     )
 }

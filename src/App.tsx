@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {HomePage} from "./pages/home.page";
 import {ErrorPage} from "./pages/error.page";
 import {NoteBuilder} from "./modules/note-builder";
 import {AuthContextProvider} from "./context/auth.context";
+import {initDB} from "./api/db.api";
 
 function App() {
+    useEffect(()=>{
+        initDB();
+    },[])
     return (
         <AuthContextProvider>
             <RouterProvider router={createBrowserRouter([
@@ -14,6 +18,9 @@ function App() {
                     path: "/",
                     children: [{
                         path: '',
+                        loader:async ()=>{
+                            return null
+                        },
                         element: <HomePage/>
                     }, {
                         path: 'note/',

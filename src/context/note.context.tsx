@@ -1,14 +1,28 @@
-import React, {useState} from 'react';
-import {story} from "../mock/notes";
-import {InterfaceCollection, UserNotesProps} from "../utlis/interfaces";
+import React, {useEffect, useState} from 'react';
+import {NoteInterface} from "../utlis/interfaces";
 import {Props} from "./auth.context";
+import {fetchAllNotes} from "../api/db.api";
 
 
+export const NoteContext = React.createContext<any>({
+    notes: []
+});
 
-export const NoteContext = React.createContext<any>(null);
+const NoteContextProvider = ({children}: Props) => {
+    let [notes, setNotes] = useState<NoteInterface[]>([]);
 
-const  NoteContextProvider = ({children}:Props)=>{
-    const [notes,setNotes] = useState<UserNotesProps[]>(story);
+    useEffect(() => {
+        fetchNotes();
+    }, [])
+
+    function fetchNotes() {
+        fetchAllNotes((data: NoteInterface[]) => {
+            setNotes(data);
+        }, () => {
+            setNotes([]);
+        })
+    }
+
     return (
         <NoteContext.Provider value={{notes}}>
             {children}
