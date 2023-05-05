@@ -55,3 +55,6 @@ code {
   height: 500px;
   margin: auto;
 }
+.position-right{
+  text-align: right;
+}

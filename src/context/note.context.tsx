@@ -24,7 +24,7 @@ const NoteContextProvider = ({children}: Props) => {
     }
 
     return (
-        <NoteContext.Provider value={{notes}}>
+        <NoteContext.Provider value={{notes,fetchNotes}}>
             {children}
         </NoteContext.Provider>
     )
