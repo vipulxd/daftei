@@ -6,6 +6,7 @@ import {ErrorPage} from "./pages/error.page";
 import {NoteBuilder} from "./modules/note-builder";
 import {AuthContextProvider} from "./context/auth.context";
 import {initDB} from "./api/db.api";
+import SnackbarProvider from 'react-simple-snackbar'
 
 function App() {
     useEffect(()=>{
@@ -13,6 +14,7 @@ function App() {
     },[])
     return (
         <AuthContextProvider>
+            <SnackbarProvider >
             <RouterProvider router={createBrowserRouter([
                 {
                     path: "/",
@@ -39,7 +41,8 @@ function App() {
                     element: <ErrorPage/>
                 }
             ], {basename: '/'})}/>
-        </AuthContextProvider>
+            </SnackbarProvider>
+            </AuthContextProvider>
     );
 }
 

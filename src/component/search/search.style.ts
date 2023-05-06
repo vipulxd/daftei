@@ -1,6 +1,6 @@
 export const style = {
     input : {
-        width:'400px',
+        width:'30vw',
         height:'15px',
         background:'transparent',
         border:'2px solid #a3cfa7',

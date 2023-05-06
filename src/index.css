@@ -12,7 +12,10 @@ body {
 body::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
-
+a{
+  color:rgb(163, 207, 167);
+  text-decoration: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -26,6 +29,13 @@ code {
 .nav-position{
   position: fixed;
   top:0;
+}
+.note-container{
+  overflow: auto;
+  position: relative;
+  resize: both;
+  margin:4px;
+  min-width: 150px;
 }
 .note-container:hover { transform: scale(1.01); }
 
