@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactQuill from 'react-quill';
+import { useSnackbar } from 'react-simple-snackbar';
 import {useLocation, useParams} from "react-router-dom";
 import 'react-quill/dist/quill.snow.css';
 import {style} from './note-builder.style';
@@ -8,9 +9,13 @@ import {Searchbar} from '../../component/search';
 import {NoteInterface} from '../../utlis/interfaces';
 import {createNote, getNote, updateNote} from '../../api/db.api';
 import uuid from 'react-uuid';
+import { SnackOptions } from '../../utlis/helper-functions';
+
+
 
 export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }) {
     const [value, setValue] = useState<any>('');
+    const [openSnackbar, closeSnackbar] = useSnackbar(SnackOptions)
     const [note, setNote] = useState<NoteInterface | null>({note_id: uuid(), content: '',updated_at:null,created_at:null});
     let {noteId} = useParams();
     useEffect(() => {
@@ -27,12 +32,14 @@ export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }
     }, [])
     function handleSave() {
         updateNote(note, note.note_id, () => {
+            openSnackbar('Note is added')
             setValue('')
             window.location.replace('/')
         })
     }
     return (
         <React.Fragment>
+
             <Navigation onBtnClick={(e: any) => {
                 handleSave()
             }}/>
@@ -43,6 +50,7 @@ export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }
                 }}
                 />
             </div>
+
         </React.Fragment>
     )
 }

@@ -17,7 +17,11 @@ const NoteContextProvider = ({children}: Props) => {
 
     function fetchNotes() {
         fetchAllNotes((data: NoteInterface[]) => {
-            setNotes(data);
+            let sortedNotes = data.sort((a:NoteInterface,b:NoteInterface)=>{
+                if(a.created_at < b.created_at) return 1
+                else return 0
+                })
+            setNotes(sortedNotes);
         }, () => {
             setNotes([]);
         })

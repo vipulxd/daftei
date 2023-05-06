@@ -12,6 +12,7 @@ interface Props {
 
 export function Note({note, index, onDelete}: Props) {
     let {content, note_id, created_at, user_id, updated_at, published_at} = note;
+
     return (
         <React.Fragment key={index} >
             <div className={'note-container'} style={style.container}>
@@ -20,10 +21,16 @@ export function Note({note, index, onDelete}: Props) {
                     window.location.replace('/note/' + note_id)
                 }}><SVGIcon
                     name={'edit'}
-                    height={'45px'}
-                    width={'22px'}
+                    height={'50px'}
+                    width={'20px'}
                 /></div>
-                <div onClick={() => onDelete(note_id)} className={'light btn-del light-border'}>Delete</div>
+                <div onClick={() => onDelete(note_id)} className={'light btn-del'}>
+                    <SVGIcon
+                        name={'delete'}
+                        height={'50px'}
+                        width={'20px'}
+                    />
+                </div>
             </div>
         </React.Fragment>
     )
