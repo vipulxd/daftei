@@ -10,7 +10,7 @@ export const initDB = () => {
     }
     request.onsuccess = function(){
         db = request.result;
-        let store = db.createObjectStore("note", {keyPath: 'note_id'})
+        // let store = db.createObjectStore("note", {keyPath: 'note_id'})
     }
     request.onupgradeneeded = function(){
         console.log('needed')
