@@ -9,7 +9,7 @@ import {Searchbar} from '../../component/search';
 import {NoteInterface} from '../../utlis/interfaces';
 import {createNote, getNote, updateNote} from '../../api/db.api';
 import uuid from 'react-uuid';
-import { SnackOptions } from '../../utlis/helper-functions';
+import {QuillFormats, QuillModules, SnackOptions } from '../../utlis/helper-functions';
 
 
 
@@ -44,7 +44,7 @@ export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }
                 handleSave()
             }}/>
             <div style={style.EditorContainer}>
-                <ReactQuill theme="snow" className={"editor"} value={note.content} onChange={(e: any) => {
+                <ReactQuill theme="snow" className={"editor"} modules={QuillModules} formats={QuillFormats} value={note.content} onChange={(e: any) => {
                     setNote({...note, content: e});
 
                 }}

@@ -7,3 +7,37 @@ export const  SnackOptions  ={
         textAlign: 'center',
     }
 }
+
+export const  QuillFormats  = [
+    'header',
+    'font',
+    'size',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'indent',
+    'link',
+    'image',
+    'color',
+    'size',
+    'video',
+    'align',
+    'background',
+    'direction',
+    'code-block',
+    'code',
+];
+
+export const QuillModules = {
+    toolbar: [
+        [{ header: [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+        ['link', 'image'],
+    ],
+};

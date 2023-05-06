@@ -6,16 +6,18 @@
     height:100%;
 }
 .ql-toolbar {
-    background: #eaecec;
+    background: rgb(163, 207, 167);
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
     border-bottom: none;
+    color:rgb(163, 207, 167);
 }
 .ql-container {
      min-height: 10em;
      border-bottom-left-radius: 0.5em;
      border-bottom-right-radius: 0.5em;
-     background: #fefcfc;
+     background: #09111b;
+     color:rgb(163, 207, 167);
 
  }
 .grid{
