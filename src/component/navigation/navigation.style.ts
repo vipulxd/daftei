@@ -17,7 +17,7 @@ export const style = {
 
     },
     blockEnd:{
-      marginRight:80,
+        marginRight:'20px',
         border: '1px solid rgb(163, 207, 167)',
         justifyContent:'center',
         alignItems:'center',
