@@ -42,9 +42,10 @@ code {
   scrollbar-width: none;  /* Firefox */
   overflow: auto;
   position: relative;
-  resize: both;
+  /*resize: both;*/
   margin:4px;
   min-width: 150px;
+  height:100%;
 }
 
 .note-container:hover { transform: scale(1.01); }

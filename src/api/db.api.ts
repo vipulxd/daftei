@@ -60,6 +60,7 @@ export function getNote(noteId: string, success: (note: NoteInterface) => void, 
 }
 
 export const updateNote = (updatedNote: NoteInterface, noteId: string, onSuccess: (note: NoteInterface) => void) => {
+    console.log(noteId)
     let req: any = window.indexedDB.open('hulk');
     req.onsuccess = function (event) {
         db = event.target.result;

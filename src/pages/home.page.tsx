@@ -11,7 +11,7 @@ export function HomePage():JSX.Element {
     return (
         <React.Fragment>
             <SnackbarProvider>
-            <Navigation Searchbar={<Searchbar />} SyncButton={<Button name={'Sync Now'} onBtnClick={handleSyncClick} />} onBtnClick={(e)=>{}} />
+            <Navigation AddNoteBtn={<Button name={'Add Note'} onBtnClick={()=>{window.location.replace('/note')}} />} Searchbar={<Searchbar />} SyncButton={<Button name={'Sync Now'} onBtnClick={handleSyncClick} />} onBtnClick={(e)=>{}} />
             <DataContentProvider>
                 <NotesModule/>
             </DataContentProvider>

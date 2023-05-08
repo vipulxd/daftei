@@ -8,30 +8,20 @@ interface Props {
     note: NoteInterface,
     index: number,
     onDelete?: (note_id: string) => void,
-    onClick?: (note:NoteInterface) => void
+    onClick?: (note: NoteInterface) => void,
+    EditIcon?: JSX.Element,
+    RemoveIcon?: JSX.Element
 }
 
-export function Note({note, index, onDelete,onClick}: Props) {
+export function Note({note, index, onDelete, onClick, EditIcon, RemoveIcon}: Props) {
     let {content, note_id, created_at, user_id, updated_at, published_at} = note;
 
     return (
         <React.Fragment key={index}>
-            <div className={'note-container'} onClick={()=>onClick(note)} style={style.container}>
+            <div className={'note-container'} style={style.container}>
+                {EditIcon}
+                {RemoveIcon}
                 <div style={style.content}> {content && parse(content)}</div>
-                <div className={'light btn-update light-border'} onClick={() => {
-                    window.location.replace('/note/' + note_id)
-                }}><SVGIcon
-                    name={'edit'}
-                    height={'50px'}
-                    width={'15px'}
-                /></div>
-                <div onClick={() => onDelete(note_id)} className={'light btn-del'}>
-                    <SVGIcon
-                        name={'delete'}
-                        height={'50px'}
-                        width={'20px'}
-                    />
-                </div>
             </div>
         </React.Fragment>
     )

@@ -12,14 +12,15 @@
     border-bottom: none;
     color:rgb(163, 207, 167);
 }
+
 .ql-container {
      min-height: 10em;
      border-bottom-left-radius: 0.5em;
      border-bottom-right-radius: 0.5em;
      background: #09111b;
-     color:rgb(163, 207, 167);
-
+     color:white;
  }
+
 .grid{
     max-width: 100%;
     display: grid;

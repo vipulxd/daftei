@@ -1,6 +1,6 @@
 export const style = {
     container: {
-        padding: 20,
+        padding: '10px 20px',
         borderRadius: 10,
         margin: 10,
         boxShadow: '0px 5px 10px 0px rgba(0, 0, 0, 0.5)',
@@ -10,7 +10,7 @@ export const style = {
         height:'auto',
     },
     content: {
-        color: 'white'
+        color: 'white',
     },
     btnDel:{
         position:'absolute',
