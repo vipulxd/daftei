@@ -21,7 +21,8 @@
     "react-simple-snackbar": "^1.1.11",
     "react-uuid": "^2.0.0",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "styled-components": "^6.0.0-rc.1"
   },
   "scripts": {
     "start": "react-scripts start",
