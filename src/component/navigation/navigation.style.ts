@@ -17,14 +17,14 @@ export const style = {
 
     },
     blockEnd:{
-        marginRight:'20px',
+        marginRight:'28px',
         border: '1px solid rgb(163, 207, 167)',
         justifyContent:'center',
         alignItems:'center',
         alignSelf:'center',
         padding:4,
         borderRadius:4,
-        width:'100px',
+        width:'130px',
         cursor:'pointer'
     },
     block: {

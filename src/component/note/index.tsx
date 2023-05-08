@@ -7,15 +7,16 @@ import {SVGIcon} from '../icons/SVGIcon';
 interface Props {
     note: NoteInterface,
     index: number,
-    onDelete?: (note_id: string) => void
+    onDelete?: (note_id: string) => void,
+    onClick?: (note:NoteInterface) => void
 }
 
-export function Note({note, index, onDelete}: Props) {
+export function Note({note, index, onDelete,onClick}: Props) {
     let {content, note_id, created_at, user_id, updated_at, published_at} = note;
 
     return (
         <React.Fragment key={index}>
-            <div className={'note-container'} style={style.container}>
+            <div className={'note-container'} onClick={()=>onClick(note)} style={style.container}>
                 <div style={style.content}> {content && parse(content)}</div>
                 <div className={'light btn-update light-border'} onClick={() => {
                     window.location.replace('/note/' + note_id)

@@ -5,7 +5,7 @@ import {Logo} from "../logo";
 import {Link} from "react-router-dom";
 import {Button} from '../button';
 
-export function Navigation(props: { Button?: React.ReactElement, onBtnClick?: (e: any) => void, Searchbar?: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal; }) {
+export function Navigation(props: { SyncButton?: React.ReactElement, onBtnClick?: (e: any) => void, Searchbar?: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal; }) {
     return (
         <React.Fragment>
             <div style={style.container} className={'nav-position'}>
@@ -17,8 +17,8 @@ export function Navigation(props: { Button?: React.ReactElement, onBtnClick?: (e
                         {props.Searchbar}
                     </div>
                     {
-                        props.Button && <div style={style.blockEnd} className={'text-center'}>
-                            {props.Button}
+                        props.SyncButton && <div style={style.blockEnd} className={'text-center'}>
+                            {props.SyncButton}
                         </div>
                     }
                     <div style={style.blockEnd} className={'text-center'}>

@@ -39,6 +39,7 @@ code {
   margin:4px;
   min-width: 150px;
 }
+
 .note-container:hover { transform: scale(1.01); }
 
 .note-container img{
