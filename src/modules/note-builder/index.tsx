@@ -14,6 +14,7 @@ import {Dialog} from "../../component/dialog";
 import {TemplateModule} from "../template";
 import DataContentProvider from "../../context/note.context";
 import {TemplateList} from "../../component/templateList";
+import {ScrollDiv} from "../../component/scrollableContainer/style";
 
 
 export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }) {
@@ -57,9 +58,7 @@ export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }
             <Navigation SyncButton={<Button name={'Import template'} onBtnClick={(e): void => {handleFetchTemplate()}}/>} onBtnClick={(e: any) => {handleSave()}}/>
             <div style={style.EditorContainer}><ReactQuill theme="snow" className={"editor"} modules={QuillModules} formats={QuillFormats} value={note.content} onChange={(e: any) => {setNote({...note, content: e});}}/></div>
             <Dialog show={openTemplateLib} onClose={(): void => {setDialog(false)}}>
-                <DataContentProvider>
-                    <TemplateModule TemplateList={<TemplateList onSelect={(content: string): void => {setNote({...note,content:content});setDialog(false)}}/>}></TemplateModule>
-                </DataContentProvider>
+                <DataContentProvider><ScrollDiv><TemplateModule TemplateList={<TemplateList onSelect={(content: string): void => {setNote({...note, content: content});setDialog(false)}}/>}></TemplateModule></ScrollDiv></DataContentProvider>
             </Dialog>
         </React.Fragment>
     )

@@ -22,9 +22,7 @@ export function NotesModule() {
     return (
         <React.Fragment>
             <div style={style.container} className={'flex-wrap grid'}>
-                {data.notes.map((itx: NoteInterface, ind: number) => {
-                    return <Note note={itx} index={ind} onDelete={(note_id:string)=>handleDelete(note_id)}/>
-                })}
+                {data.notes.map((itx: NoteInterface, ind: number) => {return <Note note={itx} index={ind} onDelete={(note_id:string)=>handleDelete(note_id)}/>})}
                 {data.notes.length == 0 && <NoNotesPage />}
             </div>
         </React.Fragment>
