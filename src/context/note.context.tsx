@@ -2,22 +2,23 @@ import React, {useEffect, useState} from 'react';
 import {NoteInterface} from "../utlis/interfaces";
 import {Props} from "./auth.context";
 import {fetchAllNotes} from "../api/db.api";
+import {TemplateInterface, templates} from "../mock/templates";
 
 
-export const NoteContext = React.createContext<any>({
+export const DataContext = React.createContext<any>({
     notes: []
 });
 
-const NoteContextProvider = ({children}: Props) => {
+const DataContentProvider = ({children}: Props) => {
     let [notes, setNotes] = useState<NoteInterface[]>([]);
-
+    let [template,setTemplates ] = useState<TemplateInterface[]>(templates);
     useEffect(() => {
         fetchNotes();
     }, [])
 
     function fetchNotes() {
         fetchAllNotes((data: NoteInterface[]) => {
-            let sortedNotes = data.sort((a:NoteInterface,b:NoteInterface)=>{
+            let sortedNotes : NoteInterface[] = data.sort((a:NoteInterface,b:NoteInterface)=>{
                 if(a.created_at < b.created_at) return 1
                 else return 0
                 })
@@ -28,10 +29,10 @@ const NoteContextProvider = ({children}: Props) => {
     }
 
     return (
-        <NoteContext.Provider value={{notes,fetchNotes}}>
+        <DataContext.Provider value={{notes,fetchNotes,template}}>
             {children}
-        </NoteContext.Provider>
+        </DataContext.Provider>
     )
 }
 
-export default NoteContextProvider;
+export default DataContentProvider;

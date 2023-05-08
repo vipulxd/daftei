@@ -1,18 +1,20 @@
 import React from 'react';
 import {NotesModule} from "../modules/notes";
 import {Navigation} from "../component/navigation";
-import NoteContextProvider from "../context/note.context";
+import DataContentProvider from "../context/note.context";
 import { Searchbar } from '../component/search';
 import SnackbarProvider from 'react-simple-snackbar'
+import { Button } from '../component/button';
 
-export function HomePage() {
+export function HomePage():JSX.Element {
+    function handleSyncClick() : void{}
     return (
         <React.Fragment>
             <SnackbarProvider>
-            <Navigation Searchbar={<Searchbar />} onBtnClick={(e)=>{}} />
-            <NoteContextProvider>
+            <Navigation Searchbar={<Searchbar />} SyncButton={<Button name={'Sync Now'} onBtnClick={handleSyncClick} />} onBtnClick={(e)=>{}} />
+            <DataContentProvider>
                 <NotesModule/>
-            </NoteContextProvider>
+            </DataContentProvider>
             </SnackbarProvider>
         </React.Fragment>
     )

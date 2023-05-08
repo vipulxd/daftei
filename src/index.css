@@ -9,6 +9,13 @@ body {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
 }
+div{
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+div::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
 body::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
@@ -31,13 +38,21 @@ code {
   top:0;
 }
 .note-container{
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
   overflow: auto;
   position: relative;
   resize: both;
   margin:4px;
   min-width: 150px;
 }
+
 .note-container:hover { transform: scale(1.01); }
+
+.note-container img{
+  max-height: 500px;
+  max-width: 100%;
+}
 
 .dark{
   color:#09111b
@@ -67,4 +82,8 @@ code {
 }
 .position-right{
   text-align: right;
+}
+
+.ql-snow .ql-picker.ql-expanded .ql-picker-label{
+  color:black !important;
 }
