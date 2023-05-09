@@ -18,7 +18,7 @@ export function Note({note, index, onDelete, onClick, EditIcon, RemoveIcon}: Pro
 
     return (
         <React.Fragment key={index}>
-            <div className={'note-container'} style={style.container}>
+            <div className={'note-container box-test'} style={style.container}>
                 {EditIcon}
                 {RemoveIcon}
                 <div style={style.content}> {content && parse(content)}</div>

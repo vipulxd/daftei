@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #09111b;
+  background-color: #eeeef1;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
 }
@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
 a{
-  color:rgb(163, 207, 167);
+  color: rgb(117, 114, 114);
   text-decoration: none;
 }
 code {
@@ -47,8 +47,6 @@ code {
   min-width: 150px;
   height:100%;
 }
-
-.note-container:hover { transform: scale(1.01); }
 
 .note-container img{
   max-height: 500px;
@@ -87,4 +85,7 @@ code {
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label{
   color:black !important;
+}
+.box-test{
+  box-shadow: #000000 0px 0px 0px 2px inset, rgb(238, 238, 241) 7px -4px 0px -1px, rgb(0, 0, 0) 8px -4px;
 }

@@ -5,8 +5,7 @@ export const style = {
         padding: 20,
         justifyContent: 'center',
         width:'100%',
-        background :'#09111b',
-        borderBottom:'2px solid #73ac7826',
+        background :'#eeeef1',
         zIndex:2
     },
     blockStart: {},
@@ -18,12 +17,9 @@ export const style = {
     },
     blockEnd:{
         marginRight:'28px',
-        border: '1px solid rgb(163, 207, 167)',
         justifyContent:'center',
         alignItems:'center',
         alignSelf:'center',
-        padding:4,
-        borderRadius:4,
         width:'130px',
         cursor:'pointer'
     },
@@ -33,7 +29,8 @@ export const style = {
         justifyContent: 'center'
     },
     addBtn:{
-        textDecoration:'none'
+        textDecoration:'none',
+        color:'black'
     }
 
 }

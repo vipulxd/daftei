@@ -1,27 +1,28 @@
 /**{*/
 /*    border:1px solid white;*/
 /*}*/
-.editor{
-    padding:10px;
-    height:100%;
+.editor {
+    padding: 10px;
+    height: 100%;
+    box-shadow: #000000 0px 0px 0px 2px inset, rgb(238, 238, 241) 8px -4px 0px -1px, rgb(0, 0, 0) 8px -4px;
+    margin: 10px;
 }
+
 .ql-toolbar {
-    background: rgb(163, 207, 167);
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
+    background: rgb(238, 238, 241);
     border-bottom: none;
-    color:rgb(163, 207, 167);
+    color: rgb(163, 207, 167);
+    border: none !important;
 }
 
 .ql-container {
-     min-height: 10em;
-     border-bottom-left-radius: 0.5em;
-     border-bottom-right-radius: 0.5em;
-     background: #09111b;
-     color:white;
- }
+    min-height: 10em;
+    background: #eeeef1;
+    color: black;
+    border: none !important;
+}
 
-.grid{
+.grid {
     max-width: 100%;
     display: grid;
     margin: 0 auto;
@@ -31,15 +32,17 @@
     counter-reset: boxes;
     place-items: center;
 }
-.btn-del{
+
+.btn-del {
     position: absolute;
-    top:0;
-    right:0;
-    margin:0px 10px;
+    top: 0;
+    right: 0;
+    margin: 0px 10px;
     cursor: pointer;
 }
-.btn-update{
+
+.btn-update {
     position: absolute;
-    top:0;
-    right:50px;
+    top: 0;
+    right: 50px;
 }
