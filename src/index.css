@@ -42,7 +42,6 @@ code {
   scrollbar-width: none;  /* Firefox */
   overflow: auto;
   position: relative;
-  /*resize: both;*/
   margin:4px;
   min-width: 150px;
   height:100%;
@@ -85,7 +84,4 @@ code {
 
 .ql-snow .ql-picker.ql-expanded .ql-picker-label{
   color:black !important;
-}
-.box-test{
-  box-shadow: #000000 0px 0px 0px 2px inset, rgb(238, 238, 241) 7px -4px 0px -1px, rgb(0, 0, 0) 8px -4px;
 }

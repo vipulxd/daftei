@@ -29,12 +29,8 @@ function App() {
                         element: <NoteBuilder/>
                     }, {
                         path: 'note/:noteId',
-                        element: <NoteBuilder />,
-                        loader: async ({params}) => {
-                            // noteId
-                            // fetch the note and load it in context
-                            return null
-                        }}]
+                        element: <NoteBuilder/>,
+                    }]
                 },
                 {
                     path: '*',

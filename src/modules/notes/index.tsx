@@ -25,7 +25,7 @@ export function NotesModule() {
     return (
         <React.Fragment>
             <div style={style.container} className={'flex-wrap grid'}>
-                {data.notes.map((itx: NoteInterface, ind: number) => {return <Note
+                {data.notes.map((itx: NoteInterface, ind: number) => {return  <Note
                     EditIcon={<SVGIcon right={40} onClick={():void=>{window.location.replace('/note/' + itx.note_id)}} name={'edit'}  height={'50px'} width={'18px'}/>}
                     RemoveIcon={<SVGIcon right={10} onClick={():void=>{handleDelete(itx.note_id)}} name={'delete'} height={'50px'} width={'15px'}/>}
                     note={itx}

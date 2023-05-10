@@ -1,19 +1,14 @@
 import {NoteInterface} from "../utlis/interfaces";
-
 let db;
 export const initDB = () => {
     const request: any = window.indexedDB.open('hulk');
-    console.log('ran')
     request.onerror = (e: any) => {
-        // throw e;
         console.error(e)
     }
     request.onsuccess = function () {
         db = request.result;
-        // let store = db.createObjectStore("note", {keyPath: 'note_id'})
     }
     request.onupgradeneeded = function () {
-        console.log('needed')
         db = request.result;
         let store = db.createObjectStore("note", {keyPath: 'note_id'})
         store.createIndex('content', 'content');

@@ -29,6 +29,7 @@ export const DialogBody: IStyledComponent<'web', any, any> = styled.div`
 
 `;
 export const Icon: IStyledComponent<'web', any, any> = styled.img`
-  height: 14px;
+  height: 18px;
   width: 20px;
+  cursor: pointer;
 `;

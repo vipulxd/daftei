@@ -10,7 +10,7 @@ export function TemplateList(props:{onSelect:(content:string)=>void}):JSX.Elemen
     return (
         <React.Fragment>
           <NoteWrapper>
-              {template.map((item:TemplateInterface,index:number):JSX.Element=><Note note={{content:item.content}} index={index} onClick={(note:NoteInterface):void=>{props.onSelect(note.content)}} />)}
+              {template.map((item:TemplateInterface,index:number):JSX.Element=><Note key={index} note={{content:item.content}} index={index} onClick={(note:NoteInterface):void=>{props.onSelect(note.content)}} />)}
           </NoteWrapper>
         </React.Fragment>
     )
@@ -18,4 +18,5 @@ export function TemplateList(props:{onSelect:(content:string)=>void}):JSX.Elemen
 
 const NoteWrapper  = styled.div`
      font-size: 0.5rem;
+  cursor: pointer;
 `;

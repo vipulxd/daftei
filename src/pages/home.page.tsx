@@ -7,7 +7,9 @@ import SnackbarProvider from 'react-simple-snackbar'
 import { Button } from '../component/button';
 
 export function HomePage():JSX.Element {
-    function handleSyncClick() : void{}
+    function handleSyncClick() : void{
+        
+    }
     return (
         <React.Fragment>
             <SnackbarProvider>

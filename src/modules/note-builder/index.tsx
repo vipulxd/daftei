@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import {useSnackbar} from 'react-simple-snackbar';
 import {useParams} from "react-router-dom";
 import 'react-quill/dist/quill.snow.css';
+
 import {style} from './note-builder.style';
 import {Navigation} from '../../component/navigation';
 import {NoteInterface} from '../../utlis/interfaces';
@@ -43,6 +44,10 @@ export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }
     }, [])
 
     function handleSave() {
+        if(note.content === '') {
+            openSnackbar('Please note something')
+            return
+        }
         updateNote(note, note.note_id, () => {
             openSnackbar('Note is added')
             setValue('')
