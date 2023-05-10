@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #09111b;
+  background-color: #eeeef1;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
 }
@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
 a{
-  color:rgb(163, 207, 167);
+  color: rgb(117, 114, 114);
   text-decoration: none;
 }
 code {
@@ -42,12 +42,10 @@ code {
   scrollbar-width: none;  /* Firefox */
   overflow: auto;
   position: relative;
-  resize: both;
   margin:4px;
   min-width: 150px;
+  height:100%;
 }
-
-.note-container:hover { transform: scale(1.01); }
 
 .note-container img{
   max-height: 500px;

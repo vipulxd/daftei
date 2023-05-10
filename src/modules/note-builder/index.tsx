@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import {useSnackbar} from 'react-simple-snackbar';
 import {useParams} from "react-router-dom";
 import 'react-quill/dist/quill.snow.css';
+
 import {style} from './note-builder.style';
 import {Navigation} from '../../component/navigation';
 import {NoteInterface} from '../../utlis/interfaces';
@@ -18,30 +19,33 @@ import {ScrollDiv} from "../../component/scrollableContainer/style";
 
 
 export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }) {
+    let {noteId} = useParams();
     const [value, setValue] = useState<string>('');
     const [openSnackbar, closeSnackbar] = useSnackbar(SnackOptions)
     const [openTemplateLib, setDialog] = useState<boolean>(false);
     const [note, setNote] = useState<NoteInterface | null>({
-        note_id: uuid(),
+        note_id: noteId ? noteId : uuid(),
         content: '',
         updated_at: null,
         created_at: null
     });
-    let {noteId} = useParams();
+
     useEffect(() => {
         if (noteId || props.note) {
-            getNote(noteId, (note) => {
-                setNote({...note});
+            getNote(noteId, (n:NoteInterface):void => {
+                setNote(n);
             }, () => {
                 console.log('error');
             })
         } else {
             setNote({...note, updated_at: new Date().toDateString(), created_at: new Date().toDateString()});
         }
-
-    }, [])
-
+    }, []);
     function handleSave() {
+        if(note.content === '') {
+            openSnackbar('Please note something')
+            return
+        }
         updateNote(note, note.note_id, () => {
             openSnackbar('Note is added')
             setValue('')
@@ -55,11 +59,20 @@ export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }
 
     return (
         <React.Fragment>
-            <Navigation SyncButton={<Button name={'Import template'} onBtnClick={(e): void => {handleFetchTemplate()}}/>} onBtnClick={(e: any) => {handleSave()}}/>
-            <div style={style.EditorContainer}><ReactQuill theme="snow" className={"editor"} modules={QuillModules} formats={QuillFormats} value={note.content} onChange={(e: any) => {setNote({...note, content: e});}}/></div>
-            <Dialog show={openTemplateLib} onClose={(): void => {setDialog(false)}}>
-                <DataContentProvider><ScrollDiv><TemplateModule TemplateList={<TemplateList onSelect={(content: string): void => {setNote({...note, content: content});setDialog(false)}}/>}></TemplateModule></ScrollDiv></DataContentProvider>
+            <Navigation
+                AddNoteBtn={<Button name={"Save Note"} onBtnClick={():void=>{handleSave()}} />}
+                SyncButton={<Button name={'Import template'} onBtnClick={(e): void => {handleFetchTemplate()}}/>} />
+            <div style={style.EditorContainer}>
+                <ReactQuill theme="snow" className={"editor"} modules={QuillModules} formats={QuillFormats} value={note.content} onChange={(e: any) => {setNote({...note, content: e});}}/>
+            </div>
+            <Dialog heading={"Import Templates"} show={openTemplateLib} onClose={(): void => {setDialog(false)}}>
+                <DataContentProvider>
+                    <ScrollDiv>
+                    <TemplateModule TemplateList={<TemplateList onSelect={(content: string): void => {setNote({...note, content: content});setDialog(false)}}/>}></TemplateModule>
+                    </ScrollDiv>
+                </DataContentProvider>
             </Dialog>
         </React.Fragment>
     )
 }
+

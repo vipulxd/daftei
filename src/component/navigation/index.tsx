@@ -5,7 +5,7 @@ import {Logo} from "../logo";
 import {Link} from "react-router-dom";
 import {Button} from '../button';
 
-export function Navigation(props: { SyncButton?: React.ReactElement, onBtnClick?: (e: any) => void, Searchbar?: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal; }) {
+export function Navigation(props: {AddNoteBtn?: React.ReactElement, SyncButton?: React.ReactElement, onBtnClick?: (e: any) => void, Searchbar?: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal; }) {
     return (
         <React.Fragment>
             <div style={style.container} className={'nav-position'}>
@@ -21,14 +21,13 @@ export function Navigation(props: { SyncButton?: React.ReactElement, onBtnClick?
                             {props.SyncButton}
                         </div>
                     }
-                    <div style={style.blockEnd} className={'text-center'}>
-                        <Link to={'/note'} style={style.addBtn}>
-                            <div className={'light-border light'} onClick={(e) => {
-                                props?.onBtnClick(e)
-                            }}>Add Note
-                            </div>
-                        </Link>
-                    </div>
+                    {
+                      props.AddNoteBtn &&  <div style={style.blockEnd} className={'text-center'}>
+                            <Link to={'/note'} style={style.addBtn}>
+                                {props.AddNoteBtn}
+                            </Link>
+                        </div>
+                    }
                 </div>
             </div>
         </React.Fragment>

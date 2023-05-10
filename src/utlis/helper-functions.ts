@@ -1,14 +1,15 @@
-export const  SnackOptions  ={
+export const SnackOptions = {
     position: 'bottom-right',
     style: {
-        backgroundColor: '#09111b',
-        border: '2px solid rgb(163, 207, 167)',
-        color: 'rgb(163, 207, 167)',
+        backgroundColor: 'white',
+        boxShadow: '#000000 0px 0px 0px 2px inset, white 7px -4px 0px -1px, rgb(0, 0, 0) 8px -4px',
+        color: 'rgb(0,0,0)',
         textAlign: 'center',
+        borderRadius:0,
     }
 }
 
-export const  QuillFormats  = [
+export const QuillFormats = [
     'header',
     'font',
     'size',
@@ -34,10 +35,10 @@ export const  QuillFormats  = [
 
 export const QuillModules = {
     toolbar: [
-        [{ header: [1, 2, false] }],
+        [{header: [1, 2, false]}],
         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+        [{list: 'ordered'}, {list: 'bullet'}],
+        [{align: ''}, {align: 'center'}, {align: 'right'}, {align: 'justify'}],
         ['link', 'image'],
     ],
 };
