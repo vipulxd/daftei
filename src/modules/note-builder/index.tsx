@@ -33,16 +33,14 @@ export function NoteBuilder(props: { note?: NoteInterface, onSave?: () => void }
     useEffect(() => {
         if (noteId || props.note) {
             getNote(noteId, (n:NoteInterface):void => {
-                setNote({...n});
+                setNote(n);
             }, () => {
                 console.log('error');
             })
         } else {
             setNote({...note, updated_at: new Date().toDateString(), created_at: new Date().toDateString()});
         }
-
-    }, [])
-
+    }, []);
     function handleSave() {
         if(note.content === '') {
             openSnackbar('Please note something')
