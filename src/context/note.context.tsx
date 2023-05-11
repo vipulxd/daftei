@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {NoteInterface} from "../utlis/interfaces";
-import {Props} from "./auth.context";
+import {Props} from "./app.context";
 import {fetchAllNotes} from "../api/db.api";
 import {TemplateInterface, templates} from "../mock/templates";
 
