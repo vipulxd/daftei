@@ -1,4 +1,5 @@
 import {NoteInterface, TemplateInterface} from "../utlis/interfaces";
+import {templates} from "../mock/templates";
 let db;
 export const initDB = (onSuccess:()=>void,onError?:()=>void) => {
     const request: any = window.indexedDB.open('hulk');
@@ -150,4 +151,22 @@ export const fetchAllTemplates = (onSuccess?: (data: TemplateInterface[]) => voi
             }
         }
     } catch (e) {}
+};
+
+export const deleteTemplate = (templateId: string, onSuccess: (success: boolean) => void) => {
+    try {
+        let req: any = window.indexedDB.open('hulk');
+        req.onsuccess = function (e) {
+            db = e.target.result;
+            let tx: any = db.transaction('template', 'readwrite');
+            let store = tx.objectStore('template');
+            let request = store.delete(templateId);
+            request.onsuccess = function () {
+                onSuccess(true)
+            }
+        }
+    } catch (e) {
+
+    }
+
 }
