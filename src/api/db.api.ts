@@ -1,8 +1,8 @@
 import {NoteInterface, TemplateInterface} from "../utlis/interfaces";
-import {templates} from "../mock/templates";
+
 let db;
-export const initDB = (onSuccess:()=>void,onError?:()=>void) => {
-    const request: any = window.indexedDB.open('hulk');
+export const initDB = (onSuccess: () => void, onError?: () => void) => {
+    let request: any = window.indexedDB.open('hulk', 2);
     request.onerror = (e: any) => {
         console.error(e)
     }
@@ -11,17 +11,19 @@ export const initDB = (onSuccess:()=>void,onError?:()=>void) => {
         onSuccess()
     }
     request.onupgradeneeded = function (event) {
-
         db = event.target.result;
-        let noteStore = db.createObjectStore("note", {keyPath: 'note_id'})
-        noteStore.createIndex('content', 'content');
-        noteStore.createIndex('note_id', 'note_id', {unique: true});
-        noteStore.createIndex('created_at', 'created_at', {unique: false});
-        noteStore.createIndex('updated_at', 'updated_at', {unique: false});
-        let templateStore = db.createObjectStore('template',{keyPath:'template_id'});
-        templateStore.createIndex('content','content');
-        templateStore.createIndex('template_id','template_id',{unique:true});
-        console.log(templateStore)
+        if (!db.objectStoreNames.contains('note')) {
+            let noteStore = db.createObjectStore("note", {keyPath: 'note_id'})
+            noteStore.createIndex('content', 'content');
+            noteStore.createIndex('note_id', 'note_id', {unique: true});
+            noteStore.createIndex('created_at', 'created_at', {unique: false});
+            noteStore.createIndex('updated_at', 'updated_at', {unique: false});
+        }
+        if (!db.objectStoreNames.contains('template')) {
+            let templateStore = db.createObjectStore('template', {keyPath: 'template_id'});
+            templateStore.createIndex('content', 'content');
+            templateStore.createIndex('template_id', 'template_id', {unique: true});
+        }
         onSuccess()
     }
 
@@ -47,7 +49,8 @@ export const fetchAllNotes = (onSuccess?: (data: NoteInterface[]) => void, onErr
                 }
             }
         }
-    } catch (e) {}
+    } catch (e) {
+    }
 }
 
 export function getNote(noteId: string, success: (note: NoteInterface) => void, onError: (e: string) => void) {
@@ -150,7 +153,8 @@ export const fetchAllTemplates = (onSuccess?: (data: TemplateInterface[]) => voi
                 }
             }
         }
-    } catch (e) {}
+    } catch (e) {
+    }
 };
 
 export const deleteTemplate = (templateId: string, onSuccess: (success: boolean) => void) => {
