@@ -32,7 +32,7 @@ export function Note({note, index, onDelete, onClick, EditIcon, RemoveIcon}: Pro
                 <DateElement>{formatDate(created_at)}</DateElement>
                 {EditIcon}
                 {RemoveIcon}
-                <div style={style.content}> {content && parse(content)}</div>
+                <div style={style.content} onClick={()=>{onClick && onClick(note)}} > {content && parse(content)}</div>
             </div>
             </ShadowContainer>
         </React.Fragment>

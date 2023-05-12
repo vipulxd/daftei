@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {NoteInterface} from "../utlis/interfaces";
-import {Props} from "./auth.context";
-import {fetchAllNotes} from "../api/db.api";
-import {TemplateInterface, templates} from "../mock/templates";
+import {NoteInterface, TemplateInterface} from "../utlis/interfaces";
+import {Props} from "./app.context";
+import {fetchAllNotes, fetchAllTemplates} from "../api/db.api";
+
 
 
 export const DataContext = React.createContext<any>({
@@ -11,7 +11,7 @@ export const DataContext = React.createContext<any>({
 
 const DataContentProvider = ({children}: Props) => {
     let [notes, setNotes] = useState<NoteInterface[]>([]);
-    let [template,setTemplates ] = useState<TemplateInterface[]>(templates);
+    let [template,setTemplates ] = useState<TemplateInterface[]>([]);
     useEffect(() => {
         fetchNotes();
     }, [])
@@ -23,8 +23,12 @@ const DataContentProvider = ({children}: Props) => {
                 else return 0
                 })
             setNotes(sortedNotes);
+
         }, () => {
             setNotes([]);
+        })
+        fetchAllTemplates((data:TemplateInterface[])=>{
+            setTemplates([...data])
         })
     }
 

@@ -1,20 +1,28 @@
-import {NoteInterface} from "../utlis/interfaces";
+import {NoteInterface, TemplateInterface} from "../utlis/interfaces";
+import {templates} from "../mock/templates";
 let db;
-export const initDB = () => {
+export const initDB = (onSuccess:()=>void,onError?:()=>void) => {
     const request: any = window.indexedDB.open('hulk');
     request.onerror = (e: any) => {
         console.error(e)
     }
-    request.onsuccess = function () {
-        db = request.result;
+    request.onsuccess = function (event) {
+        db = event.target.result;
+        onSuccess()
     }
-    request.onupgradeneeded = function () {
-        db = request.result;
-        let store = db.createObjectStore("note", {keyPath: 'note_id'})
-        store.createIndex('content', 'content');
-        store.createIndex('note_id', 'note_id', {unique: true});
-        store.createIndex('created_at', 'created_at', {unique: false});
-        store.createIndex('updated_at', 'updated_at', {unique: false});
+    request.onupgradeneeded = function (event) {
+
+        db = event.target.result;
+        let noteStore = db.createObjectStore("note", {keyPath: 'note_id'})
+        noteStore.createIndex('content', 'content');
+        noteStore.createIndex('note_id', 'note_id', {unique: true});
+        noteStore.createIndex('created_at', 'created_at', {unique: false});
+        noteStore.createIndex('updated_at', 'updated_at', {unique: false});
+        let templateStore = db.createObjectStore('template',{keyPath:'template_id'});
+        templateStore.createIndex('content','content');
+        templateStore.createIndex('template_id','template_id',{unique:true});
+        console.log(templateStore)
+        onSuccess()
     }
 
 }
@@ -34,6 +42,7 @@ export const fetchAllNotes = (onSuccess?: (data: NoteInterface[]) => void, onErr
                     collection.push(cursor.value);
                     cursor.continue();
                 } else {
+                    console.log(collection)
                     onSuccess(collection);
                 }
             }
@@ -98,6 +107,64 @@ export const createNote = (note: NoteInterface, onSuccess: () => void) => {
         let request = tx.objectStore('note');
         request.add(note);
         onSuccess()
+    } catch (e) {
+
+    }
+
+}
+
+
+export const updateTemplate = (template: TemplateInterface, template_id: string, onSuccess: (note: TemplateInterface) => void) => {
+    try {
+        let req: any = window.indexedDB.open('hulk');
+        req.onsuccess = function (event) {
+            db = event.target.result;
+            let tx = db.transaction('template', 'readwrite');
+            let store = tx.objectStore('template');
+            let request = store.put(template);
+            request.onsuccess = function () {
+                onSuccess(request.result)
+            }
+        }
+    } catch (e) {
+    }
+}
+
+export const fetchAllTemplates = (onSuccess?: (data: TemplateInterface[]) => void, onError?: (error: string) => void) => {
+    try {
+        let request: any = window.indexedDB.open('hulk');
+        request.onsuccess = (e: any) => {
+            db = e.target.result;
+            let tx: any = db.transaction("template", "readonly");
+            let notes = tx.objectStore('template');
+            let cursor = notes.openCursor();
+            let collection: TemplateInterface[] = [];
+            cursor.onsuccess = (e: any) => {
+                let cursor = e.target.result;
+                if (cursor) {
+                    collection.push(cursor.value);
+                    cursor.continue();
+                } else {
+                    console.log(collection)
+                    onSuccess(collection);
+                }
+            }
+        }
+    } catch (e) {}
+};
+
+export const deleteTemplate = (templateId: string, onSuccess: (success: boolean) => void) => {
+    try {
+        let req: any = window.indexedDB.open('hulk');
+        req.onsuccess = function (e) {
+            db = e.target.result;
+            let tx: any = db.transaction('template', 'readwrite');
+            let store = tx.objectStore('template');
+            let request = store.delete(templateId);
+            request.onsuccess = function () {
+                onSuccess(true)
+            }
+        }
     } catch (e) {
 
     }

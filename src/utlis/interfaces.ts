@@ -29,3 +29,8 @@ export interface UserNotesProps {
     created_at?: string,
     updated_at?: string
 }
+
+export interface TemplateInterface {
+    template_id : string,
+    content: string
+}

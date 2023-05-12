@@ -4,16 +4,13 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {HomePage} from "./pages/home.page";
 import {ErrorPage} from "./pages/error.page";
 import {NoteBuilder} from "./modules/note-builder";
-import {AuthContextProvider} from "./context/auth.context";
+import {ApplicationProvider} from "./context/app.context";
 import {initDB} from "./api/db.api";
 import SnackbarProvider from 'react-simple-snackbar'
 
 function App() {
-    useEffect(()=>{
-        initDB();
-    },[])
     return (
-        <AuthContextProvider>
+        <ApplicationProvider>
             <SnackbarProvider >
             <RouterProvider router={createBrowserRouter([
                 {
@@ -21,7 +18,7 @@ function App() {
                     children: [{
                         path: '',
                         loader:async ()=>{
-                            return null
+                            return false
                         },
                         element: <HomePage/>
                     }, {
@@ -38,7 +35,7 @@ function App() {
                 }
             ], {basename: '/'})}/>
             </SnackbarProvider>
-            </AuthContextProvider>
+            </ApplicationProvider>
     );
 }
 
