@@ -26,7 +26,7 @@ export function TemplateList(props: {
                     index={index}
                     onClick={(note: NoteInterface): void => {props.onSelect(note.content)}}/>)
                     :
-                    <CenterBox> <SVGIcon name={'add-note'} height={'100%'} top={50} width={'60%'}/></CenterBox>}
+                    <CenterBox> <SVGIcon name={'add-note'} height={'100%'} top={30} width={'60%'}/></CenterBox>}
             </NoteWrapper>
         </React.Fragment>
     )
