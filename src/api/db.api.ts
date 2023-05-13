@@ -10,6 +10,10 @@ export const initDB = (onSuccess: () => void, onError?: () => void) => {
         db = event.target.result;
         onSuccess()
     }
+    request.onversionchange = function(){
+        db.close();
+        window.location.reload();
+    }
     request.onupgradeneeded = function (event) {
         db = event.target.result;
         if (!db.objectStoreNames.contains('note')) {
@@ -148,7 +152,6 @@ export const fetchAllTemplates = (onSuccess?: (data: TemplateInterface[]) => voi
                     collection.push(cursor.value);
                     cursor.continue();
                 } else {
-                    console.log(collection)
                     onSuccess(collection);
                 }
             }
